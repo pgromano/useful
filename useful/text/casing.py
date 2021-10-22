@@ -2,6 +2,12 @@ import re
 
 
 __all__ = [
+    "is_global",
+    "is_snake",
+    "is_kebab",
+    "is_pascal",
+    "is_camel",
+    "infer_casing",
     "camel_to_global",
     "camel_to_kebab",
     "camel_to_pascal",
@@ -32,23 +38,23 @@ RE_IS_PASCAL = re.compile(r"^[A-Z][a-z]*(?:[A-Z][a-z]*)*$")
 RE_IS_CAMEL = re.compile(r"^[a-z]+(?:[A-Z][a-z]*)*$")
 
 
-def _is_global(string: str):
+def is_global(string: str):
     return True if RE_IS_GLOBAL.match(string) else False
 
 
-def _is_snake(string: str):
+def is_snake(string: str):
     return True if RE_IS_SNAKE.match(string) else False
 
 
-def _is_kebab(string: str):
+def is_kebab(string: str):
     return True if RE_IS_KEBAB.match(string) else False
 
 
-def _is_pascal(string: str):
+def is_pascal(string: str):
     return True if RE_IS_PASCAL.match(string) else False
 
 
-def _is_camel(string: str):
+def is_camel(string: str):
     return True if RE_IS_CAMEL.match(string) else False
 
 
@@ -56,15 +62,15 @@ def infer_casing(string: str):
     if len(string) == 0:
         raise ValueError("Cannot infer casing from empty string!")
 
-    if _is_snake(string):
+    if is_snake(string):
         return "snake"
-    elif _is_pascal(string):
+    elif is_pascal(string):
         return "pascal"
-    elif _is_global(string):
+    elif is_global(string):
         return "global"
-    elif _is_camel(string):
+    elif is_camel(string):
         return "camel"
-    elif _is_kebab(string):
+    elif is_kebab(string):
         return "kebab"
     else:
         raise ValueError(f"Could not infer casing for givin string `{string}`")
