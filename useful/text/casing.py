@@ -64,6 +64,26 @@ def camel_to_kebab(string: str):
     return snake_to_kebab(camel_to_snake(string))
 
 
+def camel_to_pascal(string: str):
+    """Convert Camel to Pascal Case
+
+    The following code takes a string input and will attempt to convert it to
+    pascal casing, assuming it is originally in camel case. For example,
+    "thisIsAnExample" would return "this-is-an-example".
+
+    Parameters
+    ----------
+    string : str
+        A camel case string
+
+    Returns
+    -------
+    str
+        A pascal case string
+    """
+    return string[0].upper() + string[1:]
+
+
 def camel_to_snake(string: str):
     """Convert Camel to Snake Case
 
