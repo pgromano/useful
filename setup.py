@@ -1,5 +1,6 @@
 from setuptools import setup, find_packages
 
+
 version = "0.0.0"
 setup(
     name="useful",
